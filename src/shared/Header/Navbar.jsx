@@ -1,32 +1,29 @@
-
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import { Menu, X } from "lucide-react";
-
 import {
   FaFacebookF,
   FaTwitter,
   FaLinkedinIn,
   FaInstagram,
 } from "react-icons/fa";
-import { MdEmail, MdAccessTime, MdAccountCircle } from "react-icons/md";
-const Navbar = ({ user = null, onLogout = () => {} }) => {
+import { MdEmail, MdAccessTime } from "react-icons/md";
+import useAuth from "../../hooks/useAuth";
+
+const Navbar = () => {
+  const { user, logoutUser } = useAuth();
+
   const [theme, setTheme] = useState("light");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Load theme from localStorage
   useEffect(() => {
-    const saved = localStorage.getItem("theme");
-    if (saved) {
-      setTheme(saved);
-      document.documentElement.setAttribute("data-theme", saved);
-    } else {
-      const current =
-        document.documentElement.getAttribute("data-theme") || "light";
-      setTheme(current);
-      localStorage.setItem("theme", current);
-    }
+    const savedTheme = localStorage.getItem("theme") || "light";
+    setTheme(savedTheme);
+    document.documentElement.setAttribute("data-theme", savedTheme);
   }, []);
 
+  // Theme Toggle
   const toggleTheme = () => {
     const next = theme === "light" ? "dark" : "light";
     setTheme(next);
@@ -34,13 +31,13 @@ const Navbar = ({ user = null, onLogout = () => {} }) => {
     document.documentElement.setAttribute("data-theme", next);
   };
 
+  // Active Link Class
   const navClass = ({ isActive }) =>
-    `font-medium relative ${
-      isActive
-        ? "font-bold after:block after:border-b-2 after:border-primary "
-        : ""
+    `font-medium relative transition ${
+      isActive ? "text-primary font-bold after:border-primary" : ""
     }`;
 
+  // Nav Links
   const links = (
     <>
       <li>
@@ -48,25 +45,56 @@ const Navbar = ({ user = null, onLogout = () => {} }) => {
           Home
         </NavLink>
       </li>
+
       <li>
         <NavLink to="/all-loans" className={navClass}>
           All Loans
         </NavLink>
       </li>
+
       <li>
         <NavLink to="/about" className={navClass}>
           About Us
         </NavLink>
       </li>
+
       <li>
         <NavLink to="/contact" className={navClass}>
           Contact
         </NavLink>
       </li>
+
+      {/* User Section */}
       <li>
-        <NavLink to="/login" className={navClass}>
-          <MdAccountCircle size={26} className="text-primary" />
-        </NavLink>
+        {user ? (
+          <div className="dropdown dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-10 rounded-full">
+                <img src={user?.photoURL} alt="user" />
+              </div>
+            </div>
+
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box shadow w-52 mt-3"
+            >
+              <li>
+                <Link>Dashboard</Link>
+              </li>
+              <li>
+                <Link onClick={logoutUser}>Logout</Link>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <NavLink to="/login" className={navClass}>
+            Login
+          </NavLink>
+        )}
       </li>
 
       <li>
@@ -74,17 +102,17 @@ const Navbar = ({ user = null, onLogout = () => {} }) => {
           type="checkbox"
           checked={theme === "dark"}
           onChange={toggleTheme}
-          className="toggle toggle-neutral text-primary"
+          className="toggle toggle-neutral"
         />
       </li>
     </>
   );
 
   return (
-    <div className="sticky top-0">
+    <div className="sticky top-0 z-50 bg-base-100 shadow-sm">
       <div className="w-full bg-gray-100 text-gray-600 text-sm">
-        <div className="container mx-auto flex items-center justify-between py-2">
-          {/* Left Icons */}
+        <div className="container mx-auto flex items-center justify-between py-2 px-4">
+          {/* Social */}
           <div className="flex items-center space-x-4">
             <FaFacebookF className="text-[#0d6efd] cursor-pointer" />
             <FaTwitter className="text-[#1da1f2] cursor-pointer" />
@@ -92,11 +120,10 @@ const Navbar = ({ user = null, onLogout = () => {} }) => {
             <FaInstagram className="text-[#E1306C] cursor-pointer" />
           </div>
 
-          {/* Center Links */}
-          <div className="hidden md:flex items-center space-x-3 text-gray-700">
-            <a href="#" className="hover:text-blue-600">
+          <div className="hidden md:flex items-center space-x-3">
+            <NavLink to="/login" className="hover:text-blue-600">
               Login
-            </a>
+            </NavLink>
             <span>/</span>
             <a href="#" className="hover:text-blue-600">
               Company News
@@ -107,48 +134,41 @@ const Navbar = ({ user = null, onLogout = () => {} }) => {
             </a>
           </div>
 
-          {/* Right Info */}
           <div className="flex items-center space-x-6">
             <div className="flex items-center space-x-1">
               <MdEmail className="text-blue-500 text-lg" />
               <span>needhelp@company.com</span>
             </div>
 
-            <div className="hidden md:flex items-center space-x-1  ">
-              <MdAccessTime className="text-blue-500 text-lg" />
+            <div className="hidden md:flex items-center space-x-1">
+              <MdAccessTime className="text-primary text-lg" />
               <span>Mon - Sat 8:00 AM - 6:00 PM</span>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="py-8 px-4 flex items-center justify-between relative">
-        {/* Left: Logo */}
-        <div className="flex items-center gap-2">
-          <p className="text-2xl font-bold">MicroLoan-Hub</p>
+      <div className="container mx-auto py-5 px-4">
+        <div className="flex items-center justify-between">
+          <p className="text-2xl font-extrabold text-primary">MicroLoan-Hub</p>
+
+          <ul className="hidden md:flex items-center gap-8">{links}</ul>
+
+          <button
+            className="btn btn-ghost md:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X /> : <Menu />}
+          </button>
         </div>
 
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center gap-8">{links}</ul>
-
-        {/* Mobile Hamburger */}
-        <button
-          className="md:hidden btn btn-ghost btn-sm"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        <div
+          className={`md:hidden bg-base-100 rounded-lg shadow-md overflow-hidden transition-all duration-300 ${
+            isMenuOpen ? "max-h-96 mt-3 py-4" : "max-h-0"
+          }`}
         >
-          {isMenuOpen ? (
-            <X className="w-6 h-6 transition-transform duration-300 rotate-90" />
-          ) : (
-            <Menu className="w-6 h-6 transition-transform duration-300" />
-          )}
-        </button>
-
-        {/* Mobile Dropdown */}
-        {isMenuOpen && (
-          <ul className="absolute top-full left-0 w-full bg-base-100 shadow-md flex flex-col items-center gap-4 py-6 md:hidden z-50 transition-all duration-300">
-            {links}
-          </ul>
-        )}
+          <ul className="flex flex-col items-center gap-4">{links}</ul>
+        </div>
       </div>
     </div>
   );

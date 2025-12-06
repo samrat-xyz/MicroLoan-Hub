@@ -34,7 +34,7 @@ const Navbar = () => {
   // Active Link Class
   const navClass = ({ isActive }) =>
     `font-medium relative transition ${
-      isActive ? "text-primary font-bold after:border-primary" : ""
+      isActive ? "text-primary font-bold after:border-primary" : "hover:text-primary"
     }`;
 
   // Nav Links
@@ -91,7 +91,7 @@ const Navbar = () => {
             </ul>
           </div>
         ) : (
-          <NavLink to="/login" className={navClass}>
+          <NavLink to="/login" className="btn bg-primary text-white font-bold">
             Login
           </NavLink>
         )}
@@ -110,7 +110,7 @@ const Navbar = () => {
 
   return (
     <div className="sticky top-0 z-50 bg-base-100 shadow-sm">
-      <div className="w-full bg-gray-100 text-gray-600 text-sm">
+      <div className="w-full border-b-2 border-gray-400 text-sm">
         <div className="container mx-auto flex items-center justify-between py-2 px-4">
           {/* Social */}
           <div className="flex items-center space-x-4">
@@ -121,13 +121,11 @@ const Navbar = () => {
           </div>
 
           <div className="hidden md:flex items-center space-x-3">
-            <NavLink to="/login" className="hover:text-blue-600">
-              Login
-            </NavLink>
-            <span>/</span>
-            <a href="#" className="hover:text-blue-600">
+            
+           
+            <Link className="hover:text-blue-600">
               Company News
-            </a>
+            </Link>
             <span>/</span>
             <a href="#" className="hover:text-blue-600">
               FAQs

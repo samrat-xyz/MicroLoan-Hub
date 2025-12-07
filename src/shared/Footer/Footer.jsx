@@ -4,10 +4,10 @@ import { Facebook, Twitter, Linkedin, Github, Mail, Phone } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-base-200 pt-16">
+    <footer className="bg-base-300 pt-16">
       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-10 pb-12">
 
-        {/* ✅ Brand Info */}
+       
         <div>
           <h2 className="text-2xl font-bold text-primary mb-3">
             MicroLoan-Hub
@@ -32,7 +32,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* ✅ Quick Links */}
+       
         <div>
           <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
           <ul className="space-y-2">
@@ -59,7 +59,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* ✅ Support */}
+       
         <div>
           <h3 className="text-lg font-semibold mb-4">Support</h3>
           <ul className="space-y-2">
@@ -86,7 +86,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* ✅ Contact Info */}
+        
         <div>
           <h3 className="text-lg font-semibold mb-4">Contact</h3>
           <ul className="space-y-3 text-base-content/70">
@@ -103,7 +103,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* ✅ Bottom Bar */}
+      
       <div className="border-t border-base-300">
         <div className="container mx-auto px-4 py-5 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-base-content/70">
           <p>

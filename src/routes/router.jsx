@@ -7,6 +7,7 @@ import About from "../pages/About/About";
 import Loans from "../pages/Loans/Loans";
 import Contact from "../pages/Contact/Contact";
 import LoanDetails from "../pages/LoanDetails/LoanDetails";
+import PrivateRoutes from "./PrivateRoutes";
 
 export const router = createBrowserRouter([
   {
@@ -31,7 +32,7 @@ export const router = createBrowserRouter([
       },
       {
         path:'/loan-detail/:id',
-        Component:LoanDetails
+        element:<PrivateRoutes><LoanDetails></LoanDetails></PrivateRoutes>
       }
     ],
   },

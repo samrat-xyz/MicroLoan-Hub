@@ -8,6 +8,7 @@ import Loans from "../pages/Loans/Loans";
 import Contact from "../pages/Contact/Contact";
 import LoanDetails from "../pages/LoanDetails/LoanDetails";
 import PrivateRoutes from "./PrivateRoutes";
+import LoanApplicationForm from "../pages/LoanApplicationForm/LoanApplicationForm";
 
 export const router = createBrowserRouter([
   {
@@ -33,7 +34,12 @@ export const router = createBrowserRouter([
       {
         path:'/loan-detail/:id',
         element:<PrivateRoutes><LoanDetails></LoanDetails></PrivateRoutes>
+      },
+      {
+        path:'/apply-loan',
+        element:<LoanApplicationForm></LoanApplicationForm>
       }
+      
     ],
   },
   {

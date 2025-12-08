@@ -20,7 +20,6 @@ const LoanApplicationForm = () => {
     formState: { errors },
   } = useForm();
 
-  // ✅ যদি কেউ direct URL দিয়ে ঢোকে
   if (!loan) {
     return (
       <div className="text-center py-20">
@@ -29,7 +28,7 @@ const LoanApplicationForm = () => {
     );
   }
 
-  // ✅ Form Submit
+  //  Form Submit
   const onSubmit = async (data) => {
     if (!user) {
       Swal.fire({
@@ -62,7 +61,7 @@ const LoanApplicationForm = () => {
     };
 
     try {
-      await axios.post("http://localhost:3000/apply-loan", payload);
+      await axios.post("http://localhost:3000/applied-loan", payload);
 
       Swal.fire({
         icon: "success",
@@ -71,13 +70,13 @@ const LoanApplicationForm = () => {
       });
 
       reset();
-      navigate("/dashboard/my-loans");
+      
     } catch (err) {
       console.error(err);
       Swal.fire({
         icon: "error",
         title: "Submission Failed",
-        text: "Something went wrong!",
+        text: "You Can't Apply Again For That Loan",
       });
     } finally {
       setLoading(false);

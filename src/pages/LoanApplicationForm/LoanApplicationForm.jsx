@@ -91,7 +91,7 @@ const LoanApplicationForm = () => {
             <p className="text-primary font-medium">Loan Summary</p>
 
             <div className="bg-base-200 rounded-xl shadow p-6">
-              <div className="h-56 w-full mb-4 overflow-hidden rounded-lg">
+              <div className="h-84 w-full mb-4 overflow-hidden rounded-lg">
                 <img
                   src={loan.image}
                   alt={loan.title}

@@ -87,7 +87,7 @@ const Register = () => {
                 {...register("fullName", { required: "Full name required" })}
                 type="text"
                 placeholder="Enter your full name"
-                className="w-full py-2 outline-none text-sm"
+                className="w-full py-2 outline-none text-sm text-black"
               />
             </div>
             {errors.fullName && (
@@ -118,7 +118,7 @@ const Register = () => {
                 {...register("email", { required: "Email is required" })}
                 type="email"
                 placeholder="Enter your email"
-                className="w-full py-2 outline-none text-sm"
+                className="w-full py-2 outline-none text-black text-sm"
               />
             </div>
             {errors.email && (

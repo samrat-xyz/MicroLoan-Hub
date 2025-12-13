@@ -11,7 +11,7 @@ function LoanDetails() {
   
 
   useEffect(() => {
-    fetch(`https://loan-link-server-five.vercel.app/loans/${id}`)
+    fetch(`https://loan-link-server-rose.vercel.app/loans/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setLoan(data);

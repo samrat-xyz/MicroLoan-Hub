@@ -14,7 +14,7 @@ function ManagerHome() {
   const fetchManagerDashboard = async () => {
     try {
       // Manager should see ALL applied loans
-      const res = await axios.get("https://loan-link-server-five.vercel.app/applied-loans");
+      const res = await axios.get("https://loan-link-server-rose.vercel.app/applied-loans");
 
       const allApplications = res.data;
 

@@ -32,7 +32,7 @@ const Register = () => {
         createdAt: new Date(),
       };
 
-      await axios.post("https://loan-link-server-five.vercel.app/users", userInfo);
+      await axios.post("https://loan-link-server-rose.vercel.app/users", userInfo);
 
       Swal.fire({
         theme: "dark",
@@ -69,7 +69,7 @@ const Register = () => {
         createdAt: new Date(),
       };
 
-      await axios.post("https://loan-link-server-five.vercel.app/users", userInfo);
+      await axios.post("https://loan-link-server-rose.vercel.app/users", userInfo);
 
       Swal.fire({
         theme: "dark",

@@ -10,7 +10,7 @@ function ManageUsers() {
 
   // Fetch all users except self
   useEffect(() => {
-    fetch("https://loan-link-server-five.vercel.app/users")
+    fetch("https://loan-link-server-rose.vercel.app/users")
       .then((res) => res.json())
       .then((data) => {
         const filtered = data.filter((u) => u.email !== currentEmail);
@@ -30,7 +30,7 @@ function ManageUsers() {
     });
 
     if (confirm.isConfirmed) {
-      fetch(`https://loan-link-server-five.vercel.app/users/${id}`, { method: "DELETE" })
+      fetch(`https://loan-link-server-rose.vercel.app/users/${id}`, { method: "DELETE" })
         .then((res) => res.json())
         .then(() => {
           setUsers((prev) => prev.filter((user) => user._id !== id));
@@ -44,7 +44,7 @@ function ManageUsers() {
 
   // Update Role
   const handleRoleChange = (id, role) => {
-    fetch(`https://loan-link-server-five.vercel.app/users/${id}`, {
+    fetch(`https://loan-link-server-rose.vercel.app/users/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ role, currentUserEmail: currentEmail }),

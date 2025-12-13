@@ -6,7 +6,7 @@ function LoansCategory() {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch("https://loan-link-server-five.vercel.app/loans")
+    fetch("https://loan-link-server-rose.vercel.app/loans")
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, []);

@@ -11,7 +11,7 @@ function AllLoans() {
     setLoading(true);
 
     axios
-      .get("https://loan-link-server-five.vercel.app/loans")
+      .get("https://loan-link-server-rose.vercel.app/loans")
       .then((res) => {
         setLoans(res.data);
         setLoading(false); 

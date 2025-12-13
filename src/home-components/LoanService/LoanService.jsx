@@ -11,7 +11,7 @@ function LoanServices() {
     setLoading(true);
 
     axios
-      .get("http://localhost:3000/top-loans")
+      .get("https://loan-link-server-five.vercel.app/top-loans")
       .then((res) => {
         setLoans(res.data);
         setLoading(false); 

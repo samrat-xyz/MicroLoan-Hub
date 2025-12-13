@@ -9,7 +9,7 @@ function BorrowerHome() {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`http://localhost:3000/applied-loans?email=${user.email}`)
+        .get(`https://loan-link-server-five.vercel.app/applied-loans?email=${user.email}`)
         .then((res) => setAppliedLoans(res.data));
     }
   }, [user]);

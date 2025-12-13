@@ -13,7 +13,7 @@ function MyAppliedLoan() {
 
     const fetchAppliedLoans = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/applied-loans", {
+        const res = await axios.get("https://loan-link-server-five.vercel.app/applied-loans", {
           params: { email: user.email },
         });
         setLoans(res.data);

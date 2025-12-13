@@ -61,7 +61,7 @@ const LoanApplicationForm = () => {
     };
 
     try {
-      await axios.post("http://localhost:3000/applied-loan", payload);
+      await axios.post("https://loan-link-server-five.vercel.app/applied-loan", payload);
 
       Swal.fire({
         icon: "success",

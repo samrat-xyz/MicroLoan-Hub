@@ -19,7 +19,7 @@ function ManagerAllLoans() {
   const fetchAllLoans = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:3000/applied-loans?email=${user.email}`
+        `https://loan-link-server-five.vercel.app/applied-loans?email=${user.email}`
       );
       setLoans(res.data);
     } catch (error) {
@@ -32,7 +32,7 @@ function ManagerAllLoans() {
   // Update Loan Status
   const updateStatus = async (id, status) => {
     try {
-      await axios.patch(`http://localhost:3000/applied-loan/${id}`, {
+      await axios.patch(`https://loan-link-server-five.vercel.app/applied-loan/${id}`, {
         status,
       });
 

@@ -1,3 +1,5 @@
+<img src="https://i.ibb.co.com/RTLNtB7W/Screenshot-From-2026-01-24-19-23-42.png"/>
+
 # LoanLink- MicroLoan Management System
 
 A modern **full-stack MicroLoan Management System** designed to simplify loan application and management.

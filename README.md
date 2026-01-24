@@ -7,7 +7,7 @@ This platform allows borrowers to apply for loans easily, while managers can rev
 
 ---
 
-## 🌐 Live Website
+##  Live Website
 
 🔗 **Live Link:** https://loan-link-web.netlify.app/
 
@@ -45,7 +45,7 @@ The goal of this project is to build a **real-world micro-loan platform** where:
 
 ---
 
-## ✨ Key Features
+##  Key Features
 
 *  Firebase Authentication (Email & Google)
 *  Role-based dashboard system
